@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Acción de ventana para Ingresos Mec -->
+    <record id="ingresos_mec_action" model="ir.actions.act_window">
+        <field name="name">Ingresos Mec</field>
+        <field name="res_model">ingresos.mec</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Vista de árbol para Ingresos Mec -->
+    <record id="view_ingresos_mec_tree" model="ir.ui.view">
+        <field name="name">ingresos.mec.tree</field>
+        <field name="model">ingresos.mec</field>
+        <field name="arch" type="xml">
+            <tree string="Ingresos Mec">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="amount"/>
+                <field name="date"/>
+                <!-- <field name="employee_id" string="Employee"/> -->
+                <!-- Agrega aquí todos los campos que deseas mostrar en la vista de árbol -->
+            </tree>
+        </field>
+    </record>
+
+    <!-- Acción de ventana para Gastos Mec -->
+    <record id="gastos_mec_action" model="ir.actions.act_window">
+        <field name="name">Gastos Mec</field>
+        <field name="res_model">gastos.mec</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Vista de árbol para Gastos Mec -->
+    <record id="view_gastos_mec_tree" model="ir.ui.view">
+        <field name="name">gastos.mec.tree</field>
+        <field name="model">gastos.mec</field>
+        <field name="arch" type="xml">
+            <tree string="Gastos Mec">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="amount"/>
+                <field name="date"/>
+                <!-- Agrega aquí todos los campos que deseas mostrar en la vista de árbol -->
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_view_empleados" model="ir.actions.act_window">
+        <field name="name">Lista de Empleados</field>
+        <field name="res_model">hr.employee</field> <!-- Modelo de datos de empleados -->
+        <field name="view_mode">tree,form</field> <!-- Modos de vista a mostrar -->
+        <field name="domain">[]</field> <!-- Filtro opcional -->
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">No hay empleados para mostrar.</p>
+        </field>
+    </record>
+    
+
+    <!-- Menú principal para Ingresos y Gastos Mec -->
+    <menuitem id="empleados_mec_menu_root" name="Mec Principal">
+        <!-- Submenú para la gestión de empleados -->
+        <!-- <menuitem id="empleados_mec_menu_root" name="Gestión de Empleados" action="action_view_empleados"/> -->
+        <!-- Submenú de primer nivel para Ingresos -->
+        <menuitem id="ingresos_mec_menu_root" name="Gestión de Ingresos">
+            <!-- Acción del modelo ingresos.mec -->
+            <menuitem id="ingresos_mec_menu_action" action="ingresos_mec_action"/>
+        </menuitem>
+        <!-- Submenú de primer nivel para Gastos -->
+        <menuitem id="gastos_mec_menu_root" name="Gestión de Gastos">
+            <!-- Acción del modelo gastos.mec -->
+            <menuitem id="gastos_mec_menu_action" action="gastos_mec_action"/>
+        </menuitem>
+    </menuitem>
+</odoo>
